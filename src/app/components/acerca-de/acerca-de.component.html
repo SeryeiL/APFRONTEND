@@ -1,0 +1,140 @@
+<div class="row" *ngIf="usuario">
+    <div class=" col-xs-12 col-sm-2 col-md-2 col-gl-2">
+        <img src="{{usuario.imagenPerfil}}" alt="imagen de perfil" srcset="" class="img-fluid" id="fotoPerfil">
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-gl-4">
+        <br>
+        <h2 id="nombre">{{usuario.nombre}} {{usuario.apellido}}</h2>
+        <p>{{usuario.titulo}}</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-gl-6">
+    <span>
+        <br>
+        <h3>Acerca de mi</h3>
+        <div class="icons" *ngIf="isLogged">
+            <button
+              class="icon edit btn btn-primary"
+              (click)="onOpenModal('edit', usuario)"
+              data-bs-toggle="modal"
+              data-bs-target="#editUsuarioModal">
+              <a 
+              alt="Editar" 
+              title="Editar"
+              ><i class="fa fa-pencil"></i> 
+            </a>
+            </button>
+            </div>
+        <p>{{usuario.descripcion}}</p>
+    </span>
+</div>
+</div>
+
+<!-- Modal editar usuario -->
+<div
+  class="modal fade"
+  id="editUsuarioModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editUsuarioModalLabel"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editUsuarioModalLabel">
+          Editar Usuario {{ editUsuario?.nombre }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <input
+            type="hidden"
+            ngModel="{{ editUsuario?.id }}"
+            name="id"
+            class="form-control"
+            id="id"
+            placeholder=""
+          />
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input
+              type="text"
+              ngModel="{{editUsuario?.nombre }}"
+              name="nombre"
+              class="form-control"
+              id="nombre"
+              placeholder="Nombre"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input
+              type="text"
+              ngModel="{{ editUsuario?.apellido }}"
+              name="apellido"
+              class="form-control"
+              id="apellido"
+              placeholder="Apellido"
+            />
+          </div>
+          <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input
+              type="text"
+              ngModel="{{ editUsuario?.titulo }}"
+              name="titulo"
+              class="form-control"
+              id="titulo"
+              placeholder="título"
+            />
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <input
+              type="text"
+              ngModel="{{ editUsuario?.descripcion }}"
+              name="descripcion"
+              class="form-control"
+              id="descripcion"
+              placeholder="Descripción"
+            />
+          </div>
+          <div class="form-group">
+            <label for="imagenPerfil">Imagen de perfil:</label>
+            <input
+              type="text"
+              ngModel="{{ editUsuario?.imagenPerfil }}"
+              name="imagenPerfil"
+              class="form-control"
+              id="imagenPerfil"
+              placeholder="Imagen de perfil"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              (click)="onEditUsuario(editForm.value)"
+              type="button"
+              class="btn btn-success"
+            >
+              Guardar Cambios
+            </button>
+            <button
+              type="button"
+              id="editUsuarioModal"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

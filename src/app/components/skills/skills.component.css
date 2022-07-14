@@ -1,0 +1,31 @@
+.row{
+    font-family: monospace;
+    position: relative;
+    text-align: center;
+    background-color: blueviolet;
+  }
+h3{
+background-color: aqua;
+margin: 0%;
+}
+ 
+.icons{
+  float: right;
+  margin-top: 10%;
+  
+  
+}
+.icon{
+  margin-right: 5px;
+  border-color: burlywood;
+}
+
+.icono{
+
+  margin-top: 10px;
+  margin-right:5px ;
+  border-color: burlywood;
+
+}
+
+
